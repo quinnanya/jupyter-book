@@ -145,8 +145,7 @@ specifying them as [local_extensions](config:sphinx:local_extensions) in the `_c
 
 If you'd like to include custom CSS rules or JavaScript scripts in your book,
 you can do so by adding them to a folder called `_static` in your book's folder.
-Any files that end in `.css` or `.js` in this folder will automatically be copied
-into your built book HTML and linked in the header of each page.
+Any files that end in `.css` or `.js` in this folder should be also be added to the Sphinx configuration section of your `_config.yml`. These files will then be automatically copied into your built book HTML and linked in the header of each page.
 
 For example, to include a custom CSS file `myfile.css` in a Jupyter Book folder with
 the following structure:
@@ -167,6 +166,24 @@ Add the static file here:
 └── _static
     └── myfile.css
 ```
+
+Then, edit your `_config.yml` to include:
+
+``
+sphinx:
+    config:
+        html_css_files: 'myfile.css'
+``
+
+For .js files, use `html_js_files`, for instance:
+
+``
+sphinx:
+    config:
+        html_js_files: 'myfile.js'
+``
+
+
 
 The rules should then automatically be applied to your site. In general, these
 CSS and JS files will be loaded *after* others are loaded on your page, so they
